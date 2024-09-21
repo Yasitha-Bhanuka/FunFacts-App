@@ -45,6 +45,7 @@ class _MainScreenState extends State<MainScreen> {
         children: [
           Expanded(
             child: PageView.builder(
+                scrollDirection: Axis.horizontal,
                 itemCount: facts.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
