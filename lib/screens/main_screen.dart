@@ -41,13 +41,31 @@ class _MainScreenState extends State<MainScreen> {
           )
         ],
       ),
-      body: ListView.builder(
-          itemCount: facts.length,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              title: Text(facts[index]),
-            );
-          }),
+      body: Column(
+        children: [
+          Expanded(
+            child: PageView.builder(
+                itemCount: facts.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                    title: Container(
+                        child: Center(
+                            child: Text(
+                      facts[index],
+                      style: TextStyle(fontSize: 35),
+                      textAlign: TextAlign.center,
+                    ))),
+                  );
+                }),
+          ),
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Swipe left for more"),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
