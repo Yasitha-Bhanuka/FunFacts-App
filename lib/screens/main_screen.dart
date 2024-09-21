@@ -13,18 +13,19 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Fun Facts"),
+        title: const Text('Fun Facts'),
         actions: [
           InkWell(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const SettingsScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return const SettingsScreen();
+              }));
             },
-            child: const Padding(
-              padding: EdgeInsets.all(8.0),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Icon(Icons.settings),
             ),
-          ),
+          )
         ],
       ),
     );
