@@ -14,15 +14,19 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   List<dynamic> facts = [];
 
+  bool isLoading = true;
+
   void getData() async {
     try {
       Response response = await Dio().get(
           "https://raw.githubusercontent.com/Yasitha-Bhanuka/funfact_flutter_api/refs/heads/main/facts.json");
 
       facts = jsonDecode(response.data);
+      isLoading = false;
 
       setState(() {});
     } catch (e) {
+      isLoading = false;
       print(e);
     }
   }
@@ -57,20 +61,22 @@ class _MainScreenState extends State<MainScreen> {
       body: Column(
         children: [
           Expanded(
-            child: PageView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: facts.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    title: Container(
-                        child: Center(
-                            child: Text(
-                      facts[index],
-                      style: TextStyle(fontSize: 35),
-                      textAlign: TextAlign.center,
-                    ))),
-                  );
-                }),
+            child: isLoading
+                ? Center(child: CircularProgressIndicator())
+                : PageView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: facts.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return ListTile(
+                        title: Container(
+                            child: Center(
+                                child: Text(
+                          facts[index],
+                          style: TextStyle(fontSize: 35),
+                          textAlign: TextAlign.center,
+                        ))),
+                      );
+                    }),
           ),
           Container(
             child: Padding(
