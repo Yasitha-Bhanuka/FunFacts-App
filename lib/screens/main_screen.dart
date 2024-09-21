@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:funfacts/screens/settings_screen.dart';
 
@@ -9,18 +12,28 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  List<String> facts = [
-    'The first oranges weren’t orange.',
-    'The color orange was named after the fruit.',
-    'The first recorded use of orange as a color name in English was in 1512.',
-    'The word orange comes from the Sanskrit word nāraṅga.',
-    'The first recorded use of orange as a color name in English was in 1512.',
-    'The word orange comes from the Sanskrit word nāraṅga.',
-    'The first recorded use of orange as a color name in English was in 1512.',
-    'The word orange comes from the Sanskrit word nāraṅga.',
-    'The first recorded use of orange as a color name in English was in 1512.',
-    'The word orange comes from the Sanskrit word nāraṅga.',
-  ];
+  List<dynamic> facts = [];
+
+  void getData() async {
+    try {
+      Response response = await Dio().get(
+          "https://raw.githubusercontent.com/Yasitha-Bhanuka/funfact_flutter_api/refs/heads/main/facts.json");
+
+      facts = jsonDecode(response.data);
+
+      setState(() {});
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    getData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
