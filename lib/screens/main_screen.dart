@@ -9,6 +9,19 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  List<String> facts = [
+    'The first oranges weren’t orange.',
+    'The color orange was named after the fruit.',
+    'The first recorded use of orange as a color name in English was in 1512.',
+    'The word orange comes from the Sanskrit word nāraṅga.',
+    'The first recorded use of orange as a color name in English was in 1512.',
+    'The word orange comes from the Sanskrit word nāraṅga.',
+    'The first recorded use of orange as a color name in English was in 1512.',
+    'The word orange comes from the Sanskrit word nāraṅga.',
+    'The first recorded use of orange as a color name in English was in 1512.',
+    'The word orange comes from the Sanskrit word nāraṅga.',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +41,13 @@ class _MainScreenState extends State<MainScreen> {
           )
         ],
       ),
+      body: ListView.builder(
+          itemCount: facts.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              title: Text(facts[index]),
+            );
+          }),
     );
   }
 }
