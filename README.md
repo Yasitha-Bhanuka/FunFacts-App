@@ -84,4 +84,4 @@ If you have any questions or feedback, feel free to reach out at [yasithabhanuka
 
 Here is a demo video of the FunFacts application:
 
-![Demo Video](lib/assets/ScreenRecord.mp4)
+https://github.com/user-attachments/assets/3246cc04-a920-41c3-aedc-a6354c5ef258
