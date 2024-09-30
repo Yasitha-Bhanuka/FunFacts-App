@@ -21,14 +21,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
         body: Column(
           children: [
             ThemeSwitcher(),
-            ElevatedButton(
-                onPressed: () {
-// change the global state variable value
-                  themeProvider.updateStringData(
-                      newData: "Hello world from updated global state");
-                },
-                child: Text("Update global state value")),
-            Text(themeProvider.dataToUpdate),
           ],
         ));
   }
